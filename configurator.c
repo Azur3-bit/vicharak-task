@@ -12,6 +12,7 @@ int main(void) {
     int fd = open(DRIVER_NAME, O_RDWR);
 
     if(fd < 0){
+        printf("the fd value is %d \n", fd);
         perror("failed to open the device \n");
         return -1;
     }
