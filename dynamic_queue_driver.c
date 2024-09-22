@@ -45,7 +45,7 @@ struct circular_queue{
 
 static int majorNumber;
 static struct class* charClass = NULL;
-static struct device* charDevice = NULL;
+// static struct device* charDevice = NULL;
 static struct circular_queue queue;
 static struct mutex queue_mutex;
 static wait_queue_head_t wait_queue;
@@ -198,6 +198,12 @@ static __init int char_init(void){
 	}
 
 
+	// (done) todo :
+		// get the major number (check)
+
+	printk(KERN_INFO "[Major Number =>] Dynamic Queue registered with Major Number %d\n", majorNumber);
+
+
 	charClass = class_create(CLASS_NAME);
 		if(IS_ERR(charClass)){
 			unregister_chrdev(majorNumber, DEIVCE_NAME);
@@ -205,7 +211,6 @@ static __init int char_init(void){
 
 			return PTR_ERR(charClass);
 		}
-
 
 	mutex_init(&queue_mutex);
 	init_waitqueue_head(&wait_queue);
