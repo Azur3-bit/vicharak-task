@@ -147,6 +147,10 @@ static long dev_ioctl(struct file *filep, unsigned int cmd, unsigned long arg){
 	struct data input_data;
 	struct data *user_data = (struct data *)arg;
 
+	if(arg == 0 || !access_ok((void __user *)arg, sizeof(struct data))){
+		return -EFAULT;
+	}
+
 
 	switch(cmd){
 		case SET_SIZE_OF_QUEUE:
@@ -205,6 +209,7 @@ static __init int char_init(void){
 	printk(KERN_INFO "[Major Number =>] Dynamic Queue registered with Major Number %d\n", majorNumber);
 
 
+	// charClass = class_create(THIS_MODULE ,CLASS_NAME);
 	charClass = class_create(CLASS_NAME);
 		if(IS_ERR(charClass)){
 			unregister_chrdev(majorNumber, DEVICE_NAME);
