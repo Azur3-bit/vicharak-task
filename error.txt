@@ -1,3 +1,26 @@
+.
+├── configurator
+├── configurator.c
+├── dynamic_queue_driver.c
+├── dynamic_queue_driver.ko
+├── dynamic_queue_driver.mod
+├── dynamic_queue_driver.mod.c
+├── dynamic_queue_driver.mod.o
+├── dynamic_queue_driver.o
+├── error.txt
+├── filler
+├── filler.c
+├── Makefile
+├── modules.order
+├── Module.symvers
+├── reader
+├── reader.c
+├── temp.txt
+└── testing
+    ├── Makefile
+    └── testing_using_temp_code.c
+
+
 sunil@sunil-Nitro-AN515-42:/media/sunil/CodePark/vicharak-task$ sudo dmesg | tail -n 20
 [15414.473158] RBP: 00007ffda7c77b20 R08: 0000000000000000 R09: 00007e1e0a063380
 [15414.473163] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
