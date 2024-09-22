@@ -1,0 +1,50 @@
+KERNEL SPACE :::
+
+input output control operations 
+1. SET size of queue:
+	
+	CONSTRUCTOR
+	creates the space for the data structure.
+	dynamic 
+	
+2. Push data :
+
+	struct dta {     ????
+		size 
+		data
+	}
+	
+	push_(dta){
+		add into the queue 
+	}
+	
+3. pop data :
+	
+	pop(dta ){
+		remove dta from the queue 
+		print the dta.data 
+	}
+	
+	poping can be random 
+
+
+
+
+
+=========================================
+USER SPACE :::
+
+device name : /dev/sunil
+
+
+create a char device => sys IOCTL 
+	=> have to include req header files 
+	=> support device blocking 
+	
+	
+files : 
+	configurator.c => creates the constructor for queue (write operation)
+	filler.c => pushes the data in the queue (Write operation )
+	reader.c => pops the data (read operation)
+	
+	
