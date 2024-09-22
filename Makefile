@@ -1,26 +1,23 @@
+# Makefile for dynamic_queue_driver kernel module and configurator
 
 KDIR := /lib/modules/$(shell uname -r)/build
 MODULE_NAME := dynamic_queue_driver
-# PWD := $(shell pwd)
 
 obj-m := $(MODULE_NAME).o
 
 EXTRA_CFLAGS += -g
 
-# obj-m += dynamic_queue_driver.o
-# USERAPPS = configurator filler reader
+all: module configurator
 
+$(MODULE_NAME).ko: $(MODULE_NAME).c
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
 
-all : module $(MODULE_NAME).ko configurator
+module:
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
 
-$(MODULE_NAME).ko : $(MODULE_NAME).c 
+configurator: configurator.c
+	gcc -o configurator configurator.c -Wall
 
-$(MAKE) -C $(KDIR) M=$(PWD) 
-modules
-
-module : 
-$(MAKE) -C $(KDIR) M=$(PWD) modules
-
-configurator: configurator.g gcc -o configurator configurator.c -Wall
-
-clean: $(MAKE) -C $(KDIR) M=$(PWD) clean rm -f configurator
+clean:
+	$(MAKE) -C $(KDIR) M=$(PWD) clean
+	rm -f configurator
