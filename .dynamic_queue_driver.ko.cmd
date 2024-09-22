@@ -1,0 +1,1 @@
+savedcmd_/media/sunil/CodePark/vicharak-task/dynamic_queue_driver.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /media/sunil/CodePark/vicharak-task/dynamic_queue_driver.ko /media/sunil/CodePark/vicharak-task/dynamic_queue_driver.o /media/sunil/CodePark/vicharak-task/dynamic_queue_driver.mod.o

@@ -1,0 +1,1 @@
+savedcmd_/media/sunil/CodePark/vicharak-task/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /media/sunil/CodePark/vicharak-task/Module.symvers -T /media/sunil/CodePark/vicharak-task/modules.order -i Module.symvers -e 
