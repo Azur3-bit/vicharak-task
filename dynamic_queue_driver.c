@@ -81,7 +81,7 @@ static int init_queue(int size){
 	queue.tail = 0;
 	queue.count = 0;
 
-	queue.buffer = kmalloc_array(size, sizeof(struct circular_queue), GFP_KERNEL);
+	queue.buffer = kmalloc_array(size, sizeof(struct data), GFP_KERNEL);
 
 
 	if(!queue.buffer){
