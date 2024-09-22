@@ -20,25 +20,35 @@
     ├── Makefile
     └── testing_using_temp_code.c
 
-
-sunil@sunil-Nitro-AN515-42:/media/sunil/CodePark/vicharak-task$ sudo dmesg | tail -n 20
-[15414.473158] RBP: 00007ffda7c77b20 R08: 0000000000000000 R09: 00007e1e0a063380
-[15414.473163] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
-[15414.473167] R13: 0000000000000000 R14: 0000567aabda7d98 R15: 00007e1e0a096000
-[15414.473179]  </TASK>
-[15414.473183] Modules linked in: dynamic_queue_driver(OE) xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat bridge stp llc nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo xt_addrtype nft_compat nf_tables libcrc32c rfcomm snd_seq_dummy snd_hrtimer ccm overlay qrtr cmac algif_hash algif_skcipher af_alg bnep binfmt_misc nls_iso8859_1 intel_rapl_msr intel_rapl_common amdgpu uvcvideo snd_ctl_led ledtrig_audio edac_mce_amd kvm_amd videobuf2_vmalloc uvc videobuf2_memops videobuf2_v4l2 videodev snd_hda_codec_realtek videobuf2_common kvm amdxcp drm_exec gpu_sched irqbypass snd_hda_codec_hdmi btusb snd_hda_codec_generic btrtl mc drm_buddy snd_hda_intel btintel btbcm btmtk drm_suballoc_helper snd_intel_dspcfg snd_intel_sdw_acpi drm_ttm_helper crct10dif_pclmul ttm ath10k_pci snd_hda_codec polyval_clmulni bluetooth ath10k_core polyval_generic ath drm_display_helper ghash_clmulni_intel snd_hda_core sha256_ssse3 ecdh_generic sha1_ssse3 ecc snd_hwdep cec snd_pcm aesni_intel mac80211 snd_seq_midi
-[15414.473366]  snd_seq_midi_event snd_rawmidi wmi_bmof snd_seq cfg80211 rc_core acer_wmi acer_wireless snd_seq_device libarc4 snd_timer i2c_algo_bit crypto_simd cryptd rapl snd soundcore ccp sparse_keymap platform_profile i2c_piix4 k10temp joydev input_leds serio_raw mac_hid sch_fq_codel msr parport_pc ppdev lp parport efi_pstore nfnetlink dmi_sysfs ip_tables x_tables autofs4 usbhid hid_multitouch hid_generic r8169 rtsx_pci_sdmmc ahci video crc32_pclmul libahci xhci_pci rtsx_pci realtek xhci_pci_renesas i2c_hid_acpi i2c_hid hid wmi [last unloaded: dynamic_queue_driver(OE)]
-[15414.473488] CR2: 00007ffda7c77b30
-[15414.473494] ---[ end trace 0000000000000000 ]---
-[15415.424050] RIP: 0010:dev_ioctl+0x57/0x310 [dynamic_queue_driver]
-[15415.424050] Code: 00 00 00 48 85 d2 0f 8e 54 01 00 00 48 89 d3 81 fe 62 61 08 40 0f 84 e8 01 00 00 81 fe 63 61 08 80 0f 84 bd 00 00 00 81 fe 61 <61> 08 40 0f 85 c4 01 00 00 8b 1a 85 db 0f 8e ae 01 00 00 48 c7 c7
-[15415.424050] RSP: 0018:ffffc347cad93b98 EFLAGS: 00010246
-[15415.424050] RAX: 0000000000000000 RBX: 00007ffe64444720 RCX: 0000000000000000
-[15415.424050] RDX: 00007ffe64444720 RSI: 0000000040086161 RDI: ffff9fc0c8ee9300
-[15415.424050] RBP: ffffc347cad93be8 R08: 0000000000000000 R09: 0000000000000000
-[15415.424050] R10: 0000000000000000 R11: 0000000000000000 R12: ffff9fc0c8ee9300
-[15415.424050] R13: 0000000040086161 R14: 00007ffe64444720 R15: ffff9fc0c8ee9300
-[15415.424050] FS:  00007e1e0a045740(0000) GS:ffff9fc207c80000(0000) knlGS:0000000000000000
-[15415.424050] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[15415.424050] CR2: 00007ffda7c77b30 CR3: 0000000145020000 CR4: 00000000003506f0
-[15415.424050] note: configurator[115649] exited with irqs disabled
+sunil@sunil-Nitro-AN515-42:/media/sunil/CodePark/vicharak-task$ sudo dmesg | tail -n 30
+[15935.168147]  ? srso_return_thunk+0x5/0x5f
+[15935.168155]  ? irqentry_exit+0x43/0x50
+[15935.168162]  ? srso_return_thunk+0x5/0x5f
+[15935.168170]  ? exc_page_fault+0x94/0x1b0
+[15935.168179]  entry_SYSCALL_64_after_hwframe+0x78/0x80
+[15935.168188] RIP: 0033:0x731100b24ded
+[15935.168227] Code: 04 25 28 00 00 00 48 89 45 c8 31 c0 48 8d 45 10 c7 45 b0 10 00 00 00 48 89 45 b8 48 8d 45 d0 48 89 45 c0 b8 10 00 00 00 0f 05 <89> c2 3d 00 f0 ff ff 77 1a 48 8b 45 c8 64 48 2b 04 25 28 00 00 00
+[15935.168233] RSP: 002b:00007ffe4753f930 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[15935.168241] RAX: ffffffffffffffda RBX: 00007ffe4753fac8 RCX: 0000731100b24ded
+[15935.168246] RDX: 00007ffe4753f990 RSI: 0000000040086161 RDI: 0000000000000003
+[15935.168251] RBP: 00007ffe4753f980 R08: 0000000000000000 R09: 0000731100d88380
+[15935.168256] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000001
+[15935.168260] R13: 0000000000000000 R14: 000063b6a76d2d98 R15: 0000731100dbb000
+[15935.168273]  </TASK>
+[15935.168277] Modules linked in: dynamic_queue_driver(OE) xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat bridge stp llc nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo xt_addrtype nft_compat nf_tables libcrc32c rfcomm snd_seq_dummy snd_hrtimer ccm overlay qrtr cmac algif_hash algif_skcipher af_alg bnep binfmt_misc nls_iso8859_1 intel_rapl_msr intel_rapl_common amdgpu uvcvideo snd_ctl_led ledtrig_audio edac_mce_amd kvm_amd videobuf2_vmalloc uvc videobuf2_memops videobuf2_v4l2 videodev snd_hda_codec_realtek videobuf2_common kvm amdxcp drm_exec gpu_sched irqbypass snd_hda_codec_hdmi btusb snd_hda_codec_generic btrtl mc drm_buddy snd_hda_intel btintel btbcm btmtk drm_suballoc_helper snd_intel_dspcfg snd_intel_sdw_acpi drm_ttm_helper crct10dif_pclmul ttm ath10k_pci snd_hda_codec polyval_clmulni bluetooth ath10k_core polyval_generic ath drm_display_helper ghash_clmulni_intel snd_hda_core sha256_ssse3 ecdh_generic sha1_ssse3 ecc snd_hwdep cec snd_pcm aesni_intel mac80211 snd_seq_midi
+[15935.168471]  snd_seq_midi_event snd_rawmidi wmi_bmof snd_seq cfg80211 rc_core acer_wmi acer_wireless snd_seq_device libarc4 snd_timer i2c_algo_bit crypto_simd cryptd rapl snd soundcore ccp sparse_keymap platform_profile i2c_piix4 k10temp joydev input_leds serio_raw mac_hid sch_fq_codel msr parport_pc ppdev lp parport efi_pstore nfnetlink dmi_sysfs ip_tables x_tables autofs4 usbhid hid_multitouch hid_generic r8169 rtsx_pci_sdmmc ahci video crc32_pclmul libahci xhci_pci rtsx_pci realtek xhci_pci_renesas i2c_hid_acpi i2c_hid hid wmi [last unloaded: dynamic_queue_driver(OE)]
+[15935.168569] CR2: 00007ffe4753f990
+[15935.168569] ---[ end trace 0000000000000000 ]---
+[15935.681309] RIP: 0010:dev_ioctl+0x57/0x310 [dynamic_queue_driver]
+[15935.681309] Code: 00 00 00 48 85 d2 0f 8e 54 01 00 00 48 89 d3 81 fe 62 61 08 40 0f 84 e8 01 00 00 81 fe 63 61 08 80 0f 84 bd 00 00 00 81 fe 61 <61> 08 40 0f 85 c4 01 00 00 8b 1a 85 db 0f 8e ae 01 00 00 48 c7 c7
+[15935.681309] RSP: 0018:ffffc347cad93b98 EFLAGS: 00010246
+[15935.681309] RAX: 0000000000000000 RBX: 00007ffe64444720 RCX: 0000000000000000
+[15935.681309] RDX: 00007ffe64444720 RSI: 0000000040086161 RDI: ffff9fc0c8ee9300
+[15935.681309] RBP: ffffc347cad93be8 R08: 0000000000000000 R09: 0000000000000000
+[15935.681309] R10: 0000000000000000 R11: 0000000000000000 R12: ffff9fc0c8ee9300
+[15935.681309] R13: 0000000040086161 R14: 00007ffe64444720 R15: ffff9fc0c8ee9300
+[15935.681309] FS:  0000731100d6a740(0000) GS:ffff9fc207b80000(0000) knlGS:0000000000000000
+[15935.681309] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[15935.681309] CR2: 00007ffe4753f990 CR3: 0000000119c6e000 CR4: 00000000003506f0
+[15935.681309] note: configurator[118622] exited with irqs disabled
+sunil@sunil-Nitro-AN515-42:/media/sunil/CodePark/vicharak-task$ 
