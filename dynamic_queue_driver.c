@@ -15,7 +15,7 @@
 
 // definations 
 
-#define DEIVCE_NAME "sunil"
+#define DEVICE_NAME "sunil"
 #define CLASS_NAME "sunil_class"
 #define SET_SIZE_OF_QUEUE _IOW('a', 'a', int * )
 #define PUSH_DATA _IOW('a', 'b', struct data * )
@@ -45,7 +45,7 @@ struct circular_queue{
 
 static int majorNumber;
 static struct class* charClass = NULL;
-// static struct device* charDevice = NULL;
+static struct device* charDevice = NULL;
 static struct circular_queue queue;
 static struct mutex queue_mutex;
 static wait_queue_head_t wait_queue;
@@ -190,27 +190,44 @@ static ssize_t dev_read(struct file *filep, char *buffer, size_t len, loff_t *of
 
 static __init int char_init(void){
 	printk(KERN_INFO "starting the character device \n");
-	majorNumber = register_chrdev(0, DEIVCE_NAME, &fops);
+	majorNumber = register_chrdev(0, DEVICE_NAME, &fops);
 
-	if(majorNumber > 0){
+	// corrected > to '<' - silly mistake (note for later)
+	if(majorNumber < 0){
 		printk(KERN_ALERT "failed to register a major numeber \n");
 		return majorNumber;
 	}
 
 
 	// (done) todo :
-		// get the major number (check)
+		// (done) get the major number 
 
 	printk(KERN_INFO "[Major Number =>] Dynamic Queue registered with Major Number %d\n", majorNumber);
 
 
 	charClass = class_create(CLASS_NAME);
 		if(IS_ERR(charClass)){
-			unregister_chrdev(majorNumber, DEIVCE_NAME);
-			printk(KERN_ALERT "failed to register device class \n");
+			unregister_chrdev(majorNumber, DEVICE_NAME);
+			printk(KERN_ALERT "failed to register device class - unregistering the char_dev \n");
 
 			return PTR_ERR(charClass);
 		}
+
+
+
+	// made the major number fail
+	charDevice = device_create(charClass, NULL, MKDEV(majorNumber, 0), NULL, DEVICE_NAME);
+
+	if(IS_ERR(charDevice)){
+		class_destroy(charClass);
+
+		unregister_chrdev(majorNumber, DEVICE_NAME);
+		printk(KERN_ALERT "failed to create the char Device\n");
+		return PTR_ERR(charDevice);
+	}
+
+
+
 
 	mutex_init(&queue_mutex);
 	init_waitqueue_head(&wait_queue);
@@ -230,7 +247,7 @@ static void __exit char_exit(void){
 
 	class_unregister(charClass);
 	class_destroy(charClass);
-	unregister_chrdev(majorNumber, DEIVCE_NAME);
+	unregister_chrdev(majorNumber, DEVICE_NAME);
 	printk(KERN_INFO"character device driver removed safely\n");
 } 
 

@@ -1,0 +1,21 @@
+[sudo] password for sunil: 
+[12726.001573] RBP: 00007fff5acbbd60 R08: 0000000000000000 R09: 00007f0ff6ee1380
+[12726.001573] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000003
+[12726.001573] R13: 0000000000000000 R14: 00005a6fb614ed98 R15: 00007f0ff6f14000
+[12726.001573]  </TASK>
+[12726.001573] Modules linked in: dynamic_queue_driver(OE) xt_conntrack nft_chain_nat xt_MASQUERADE nf_nat bridge stp llc nf_conntrack_netlink nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 xfrm_user xfrm_algo xt_addrtype nft_compat nf_tables libcrc32c rfcomm snd_seq_dummy snd_hrtimer ccm overlay qrtr cmac algif_hash algif_skcipher af_alg bnep binfmt_misc nls_iso8859_1 intel_rapl_msr intel_rapl_common amdgpu uvcvideo snd_ctl_led ledtrig_audio edac_mce_amd kvm_amd videobuf2_vmalloc uvc videobuf2_memops videobuf2_v4l2 videodev snd_hda_codec_realtek videobuf2_common kvm amdxcp drm_exec gpu_sched irqbypass snd_hda_codec_hdmi btusb snd_hda_codec_generic btrtl mc drm_buddy snd_hda_intel btintel btbcm btmtk drm_suballoc_helper snd_intel_dspcfg snd_intel_sdw_acpi drm_ttm_helper crct10dif_pclmul ttm ath10k_pci snd_hda_codec polyval_clmulni bluetooth ath10k_core polyval_generic ath drm_display_helper ghash_clmulni_intel snd_hda_core sha256_ssse3 ecdh_generic sha1_ssse3 ecc snd_hwdep cec snd_pcm aesni_intel mac80211 snd_seq_midi
+[12726.001573]  snd_seq_midi_event snd_rawmidi wmi_bmof snd_seq cfg80211 rc_core acer_wmi acer_wireless snd_seq_device libarc4 snd_timer i2c_algo_bit crypto_simd cryptd rapl snd soundcore ccp sparse_keymap platform_profile i2c_piix4 k10temp joydev input_leds serio_raw mac_hid sch_fq_codel msr parport_pc ppdev lp parport efi_pstore nfnetlink dmi_sysfs ip_tables x_tables autofs4 usbhid hid_multitouch hid_generic r8169 rtsx_pci_sdmmc ahci video crc32_pclmul libahci xhci_pci rtsx_pci realtek xhci_pci_renesas i2c_hid_acpi i2c_hid hid wmi [last unloaded: dynamic_queue_driver(OE)]
+[12726.001573] CR2: 00007fff5acbbd70
+[12726.001573] ---[ end trace 0000000000000000 ]---
+[12726.902818] RIP: 0010:dev_ioctl+0x57/0x310 [dynamic_queue_driver]
+[12726.902818] Code: 24 10 00 00 00 00 81 fe 62 61 08 40 0f 84 d2 01 00 00 81 fe 63 61 08 80 0f 84 bf 00 00 00 81 fe 61 61 08 40 0f 85 6f 02 00 00 <48> 63 1a 85 db 0f 8e 58 02 00 00 48 c7 c7 a0 f6 30 c2 e8 92 26 93
+[12726.902818] RSP: 0018:ffffc347cad93b98 EFLAGS: 00010246
+[12726.902818] RAX: 0000000000000000 RBX: 00007ffe64444720 RCX: 0000000000000000
+[12726.902818] RDX: 00007ffe64444720 RSI: 0000000040086161 RDI: ffff9fc0c8ee9300
+[12726.902818] RBP: ffffc347cad93be8 R08: 0000000000000000 R09: 0000000000000000
+[12726.902818] R10: 0000000000000000 R11: 0000000000000000 R12: ffff9fc0c8ee9300
+[12726.902818] R13: 0000000040086161 R14: 00007ffe64444720 R15: ffff9fc0c8ee9300
+[12726.902818] FS:  00007f0ff6ec3740(0000) GS:ffff9fc207b00000(0000) knlGS:0000000000000000
+[12726.902818] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[12726.902818] CR2: 00007fff5acbbd70 CR3: 000000000a90c000 CR4: 00000000003506f0
+[12726.902818] note: configurator[101249] exited with irqs disabled
